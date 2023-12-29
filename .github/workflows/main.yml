@@ -10,3 +10,14 @@ jobs:
       # and run all Cypress tests
       - name: Cypress run
         uses: cypress-io/github-action@v6
+
+      - name: Cypress tests
+        uses: ./
+        with:
+          working-directory: kitchen-sink/.github/workflow/main
+          build: npm run build
+          start: npm start
+          config: baseUrl=https://example.cypress.io
+          spec: |
+            cypress/e2e/button.cy.js
+            cypress/e2e/homepage.cy.js
